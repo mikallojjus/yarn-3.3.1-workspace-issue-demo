@@ -1,0 +1,13 @@
+{
+  "name": "yarn-example-app-b",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.16.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16",
+    "@types/node": "18.11.18"
+  }
+}

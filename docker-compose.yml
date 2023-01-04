@@ -1,0 +1,56 @@
+services:
+  app-a:
+    container_name: app-a
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    working_dir: /app/
+    volumes:
+      # Mount all to /app
+      - .:/app
+      # Exclude other applications to keep container size small
+      - /app/apps/B
+      - /app/apps/C
+    command: sh -c "yarn workspaces focus yarn-example-app-a && yarn startA"
+    ports:
+      - "3000:3000"
+    networks:
+      - example-net
+  app-b:
+    container_name: app-b
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    working_dir: /app/
+    volumes:
+      # Mount all to /app
+      - .:/app
+      # Exclude other applications to keep container size small
+      - /app/apps/A
+      - /app/apps/C
+    command: sh -c "yarn workspaces focus yarn-example-app-b && yarn startB"
+    ports:
+      - "3001:3001"
+    networks:
+      - example-net
+  app-c:
+    container_name: app-c
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    working_dir: /app/
+    volumes:
+      # Mount all to /app
+      - .:/app
+      # Exclude other applications to keep container size small
+      - /app/apps/A
+      - /app/apps/B
+    command: sh -c "yarn workspaces focus yarn-example-app-c && yarn startC"
+    ports:
+      - "3002:3002"
+    networks:
+      - example-net
+
+networks:
+  example-net:
+    name: example-net
