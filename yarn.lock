@@ -1847,9 +1847,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"yarn-v2-dependencies-issue@workspace:.":
+"yarn-example@workspace:.":
   version: 0.0.0-use.local
-  resolution: "yarn-v2-dependencies-issue@workspace:."
+  resolution: "yarn-example@workspace:."
   dependencies:
     eslint: 7.0.0
   languageName: unknown
